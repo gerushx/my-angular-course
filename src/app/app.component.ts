@@ -8,14 +8,14 @@ import { Album } from "./albums/album.model";
 })
 export class AppComponent implements OnInit {
   title = 'my-angular-albums';
-  albumsArray: Album[];
+  albumsArray: any;
   ngOnInit(): void {
     this.albumsArray = [
       {
         id: "1",
         artist: "Tremonti",
         albumName: "Dust",
-        onSale: "true",
+        isOnSale: "true",
         price: 11.99,
         currency: "USD",
         year: 2016,
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
         "recordingLocation": "Studio Barbarosa, Orlando, FL",
         genre: "Pop/Rock",
         duration: "43:18:00",
-        URL: "https://www.allmusic.com/album/dust-mw0002918360"
+        url: "https://www.allmusic.com/album/dust-mw0002918360"
       },
       {
         id: 2,
