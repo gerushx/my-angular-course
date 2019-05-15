@@ -1,36 +1,39 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
+
 import { Album } from "./albums/album.model";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"]
 })
-export class AppComponent implements OnInit {
-  title = 'my-angular-albums';
-  albumsArray: any;
-  
-  titleCounter:1;
-  numbers: number[];
-  ngOnInit(): void {
-    const interval = setInterval(() => this.titleCounter++, 2000);
-   this.numbers=[1,2,3];
-   this.numbers = [...this.numbers];
-   
-  
+export class AppComponent {
+  title = "My Angular Albums";
+  albumsArray: Album[];
+  numbers: number[] = [1, 2, 3];
 
-   setTimeout(() => clearInterval(interval), 6000);
+  ngOnInit(): void {
+    
+    const interval = setInterval(() => {
+      this.numbers.push(4); 
+      console.log(this.numbers);
+      this.numbers = [...this.numbers];
+      this.albumsArray[0].price += 10;
+    }, 2000);
+
+    setTimeout(() => clearInterval(interval), 6000);
+
     this.albumsArray = [
       {
-        id: "1",
+        id: 1,
         artist: "Tremonti",
         albumName: "Dust",
-        isOnSale: "true",
+        isOnSale: true,
         price: 11.99,
         currency: "USD",
         year: 2016,
         releaseDate: "April 29, 2016",
-        "recordingLocation": "Studio Barbarosa, Orlando, FL",
+        recordingLocation: "Studio Barbarosa, Orlando, FL",
         genre: "Pop/Rock",
         duration: "43:18:00",
         url: "https://www.allmusic.com/album/dust-mw0002918360"
@@ -39,30 +42,29 @@ export class AppComponent implements OnInit {
         id: 2,
         artist: "Bon Jovi",
         albumName: "7800 Fahrerenheit",
-        onSale: false,
+        isOnSale: false,
         price: 7,
         year: 1985,
         currency: "USD",
         releaseDate: "April 20, 1985",
-        "recordingLocation": "Warehouse, Philadelphia, PA",
+        recordingLocation: "Warehouse, Philadelphia, PA",
         genre: "Pop/Rock",
         duration: "47:15:00",
-        URL: "https://www.allmusic.com/album/7800%C2%B0-fahrenheit-mw0000189199"
+        url: "https://www.allmusic.com/album/7800%C2%B0-fahrenheit-mw0000189199"
       },
       {
         id: 3,
         artist: "The Beatles",
         albumName: "The White Album",
-        onSale: true,
+        isOnSale: true,
         currency: "GBP",
         price: 24,
         year: 1968,
         releaseDate: "November 22, 1968",
-        "recordingLocation": "",
+        recordingLocation: "",
         genre: "Pop/Rock",
         duration: "1:33:43",
-        URL: "https://www.allmusic.com/album/the-beatles-white-album-mw0000418113"
+        url: "https://www.allmusic.com/album/the-beatles-white-album-mw0000418113"
       }];
-      console.log(this.albumsArray);
-    }
+  }
 }
